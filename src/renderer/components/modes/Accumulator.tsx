@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
+
 import AccHandDistGraph from '../graphs/Reaction/AccHandDistributionGraph';
 import AccHandMovement from '../graphs/Reaction/AccHandMovement';
 import AccTSLBScatGraph from '../graphs/Reaction/AccTSLBScatGraph';
-
 import { StatItem } from '../Stat';
-import Warning from '../Warning';
 
 interface Props {
+  /** The array of the datasets */
   data: Data[];
 }
 

@@ -1,39 +1,48 @@
-import { useEffect, useState } from 'react';
-import { MemoryRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
 import 'tailwindcss/tailwind.css';
+
+import { useState } from 'react';
 import { AiFillPrinter, AiOutlineDownload } from 'react-icons/ai';
 import { TbRefresh } from 'react-icons/tb';
-import './App.css';
+import { MemoryRouter as Router, Route, Routes } from 'react-router-dom';
+
 import Button from './components/Button';
 import Footer from './components/Footer';
+import Accumulator from './components/modes/Accumulator';
+import Reaction from './components/modes/Reaction';
 import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
 import Table from './components/Table';
 import { useParse } from './hooks/useParse';
-import Sidebar from './components/Sidebar';
 import { Modes } from './utils/Utils';
-import Reaction from './components/modes/Reaction';
-import Accumulator from './components/modes/Accumulator';
 
-export interface Content {
-  file: File;
-  data: [];
-}
-
+/**
+ * The root of the application
+ * @returns The main application component
+ */
 const App = () => {
   const [files, setFiles] = useState<File[]>([]);
-  const dataset = useParse<Data>(files);
   const [mode, setMode] = useState<Modes>();
 
+  const dataset = useParse<Data>(files); // Parse the dataset
+
+  /**
+   * Callback function for the dropzone functionality
+   * @param droppedFiles The files drop into the dropzone
+   */
   const onDrop = (droppedFiles: File[]) => {
     setFiles(droppedFiles);
   };
 
+  /**
+   * Displays the appropriate test depending on
+   * the sidebar selection
+   * @returns JSX mode component
+   */
   const Display = () => {
-
     if (mode === Modes.Reaction) return <Reaction data={dataset} />;
     if (mode === Modes.Accumulator) return <Accumulator data={dataset} />;
     if (mode === Modes.Sequence) return <div>Sequence</div>;
-
     return <div>Nothing</div>;
   };
 

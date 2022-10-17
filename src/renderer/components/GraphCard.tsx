@@ -1,18 +1,8 @@
-import {
-  Chart as Chartjs,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import { CategoryScale, Chart as Chartjs, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import type { ChartData, ChartOptions } from 'chart.js';
-import { _DeepPartialObject } from 'chart.js/types/utils';
-import { Content } from 'renderer/App';
+import { Content } from 'renderer/Content';
 
+import type { ChartData, ChartOptions } from 'chart.js';
 Chartjs.register(
   CategoryScale,
   LinearScale,
